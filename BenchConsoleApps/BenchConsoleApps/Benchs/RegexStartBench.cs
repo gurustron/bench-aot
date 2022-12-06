@@ -5,7 +5,9 @@ namespace RegexCompiled.Benchs;
 
 public class RegexStartBench
 {
-    private static string[] _strings = new[]
+    private const string Root = "/home/gurustron/Projects/bench-aot/BenchConsoleApps/publish";
+
+    private static readonly string[] _strings =
     {
         "asdasdasd",
         "1233431432108-235-0120",
@@ -15,31 +17,23 @@ public class RegexStartBench
     };
 
     [Benchmark]
-    public bool RegexCompiled()
-    {
-        bool result = false;
-        foreach (var s in _strings)
-        {
-            var run = RunHelper.Run(
-                "/home/gurustron/Projects/bench-aot/BenchConsoleApps/publish/RegexCompiled",
-                s);
-            result |= run.StartsWith("TRIM", StringComparison.InvariantCultureIgnoreCase);
-        }
+    public bool RegexCompiled() => RunBench($"{Root}/RegexCompiled");
 
-        return result;
-    }
-    
-    
     [Benchmark]
-    public bool RegexOnTheFly()
+    public bool RegexOnTheFly() => RunBench($"{Root}/RegexOnTheFly");
+
+    [Benchmark]
+    public bool RegexAOT() => RunBench($"{Root}/RegexAOT");
+
+    private static bool RunBench(string path)
     {
-        bool result = false;
+        var result = false;
         foreach (var s in _strings)
         {
             var run = RunHelper.Run(
-                "/home/gurustron/Projects/bench-aot/BenchConsoleApps/publish/RegexOnTheFly",
+                path,
                 s);
-            result |= run.StartsWith("TRIM", StringComparison.InvariantCultureIgnoreCase);
+            result |= run.StartsWith("TRUE", StringComparison.InvariantCultureIgnoreCase);
         }
 
         return result;
