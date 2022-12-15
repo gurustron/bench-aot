@@ -18,6 +18,12 @@ public class RegexStartBench
 
     [Benchmark]
     public bool RegexCompiled() => RunBench($"{Root}/RegexCompiled");
+    
+    [Benchmark]
+    public bool RegexCompiledR2RSF() => RunBench($"{Root}/RegexCompiledR2R");
+    
+    [Benchmark]
+    public bool RegexCompiledR2R() => RunBench($"{Root}/R2R/RegexCompiledR2R");
 
     [Benchmark]
     public bool RegexOnTheFly() => RunBench($"{Root}/RegexOnTheFly");
