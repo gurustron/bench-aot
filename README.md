@@ -1,8 +1,11 @@
 # bench-aot
 
-Benchmarking AOT and compiled regexes. Just for LULZ.
+Benchmarking AOT and compiled regexes. For Science!
+
+![image](https://user-images.githubusercontent.com/6535969/235639022-2c5f8c0c-b501-4799-9cf7-85463ae94706.png)
 
 From folder publish apps:
+
 ```
 dotnet publish RegexOnTheFly/RegexOnTheFly.csproj --sc -p:PublishSingleFile=true -c Release -r linux-x64  -o ./publish
 dotnet publish RegexCompiled/RegexCompiled.csproj --sc -p:PublishSingleFile=true -c Release -r linux-x64  -o ./publish
